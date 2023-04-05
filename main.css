@@ -1,42 +1,53 @@
 :root {
     --light: #ffffff;
     --dark: #777777;
-    --spacer: 1rem;
 }
 * {
 margin: 0;
-padding: 0;
 box-sizing: border-box;
 font-family: sans-serif;
 }
-header{
-    background-color: var(--dark);
+body{
+background-color: 	#DCDCDC;
+}
+header,.input—sescion{
     width: 100%;
     text-align: center;
     justify-items: center;
     align-items: center;
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    grid-template-rows: 50px;
-   
 }
-.header-felxbox{
+header{
+    background-color: var(--dark);
+    grid-template-rows: 50px;
+}
+.header-flexbox,.input—flexbox{
     grid-column: 2;
     display: flex;
     align-items: center;
     gap:10px;
 }
 .material-symbols-outlined {
-    color: var(--light);
+    /* color: var(--light); */
     font-size: 35px;
     font-variation-settings:
     'wght' 700,
     'GRAD' -25,
-    'opsz' 48
+    'opsz' 35
 }
 .header-text{
     font-family: "Inter";
     font-style: normal;
     font-weight: bold;
     font-size: 20px;
+}
+.input—sescion{
+    grid-template-rows: 100px;
+}
+input {
+    width: 350px;
+    height: 30px;
+    outline-style: none ;
+    border: 0px;
 }
