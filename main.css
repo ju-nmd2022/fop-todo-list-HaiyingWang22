@@ -63,7 +63,7 @@ h1{
       ". bnt content  ."; 
     align-items:center;
 }
-.bnt { 
+.btn { 
     grid-area: bnt; 
     justify-items: end;
 }
