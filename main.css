@@ -1,5 +1,5 @@
 :root {
-    --light: #ffffff;
+    --light: #DCDCDC;
     --dark: #777777;
 }
 * {
@@ -8,7 +8,7 @@ box-sizing: border-box;
 font-family: sans-serif;
 }
 body{
-background-color: 	#DCDCDC;
+background-color: 	var(--light);
 }
 header,.input—sescion{
     width: 100%;
@@ -29,7 +29,6 @@ header{
     gap:10px;
 }
 .material-symbols-outlined {
-    /* color: var(--light); */
     font-size: 35px;
     font-variation-settings:
     'wght' 700,
@@ -45,9 +44,34 @@ header{
 .input—sescion{
     grid-template-rows: 100px;
 }
-input {
+input{
     width: 350px;
     height: 30px;
     outline-style: none ;
     border: 0px;
+}
+h1{
+    padding: 100px;
+    text-align: center;
+    
+}
+.item {
+    display: grid; 
+    grid-template-columns: 1fr 40px 460px 1fr; 
+    gap: 0px 40px; 
+    grid-template-areas: 
+      ". bnt content  ."; 
+    align-items:center;
+}
+.bnt { 
+    grid-area: bnt; 
+    justify-items: end;
+}
+.content { 
+    width: 100%;
+    grid-area: content; 
+    font-size: 22px;
+}
+#none{
+    display: none;
 }
