@@ -1,0 +1,30 @@
+:root {
+    --dark: #777777;
+    --spacer: 1rem;
+}
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: sans-serif;
+}
+header{
+    background-color: var(--dark);
+    width: 100%;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 700,
+  'GRAD' -25,
+  'opsz' 48
+}
+.header-text{
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+}
