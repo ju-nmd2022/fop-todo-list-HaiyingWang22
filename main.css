@@ -55,12 +55,12 @@ h1{
     text-align: center;
     
 }
-.item {
+#item {
     display: grid; 
     grid-template-columns: 1fr 40px 460px 1fr; 
     gap: 0px 40px; 
     grid-template-areas: 
-      ". bnt content  ."; 
+      ". content bnt ."; 
     align-items:center;
 }
 .btn { 
