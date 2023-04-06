@@ -55,17 +55,19 @@ h1{
     text-align: center;
     
 }
-#item {
+.item {
     display: grid; 
-    grid-template-columns: 1fr 40px 460px 1fr; 
+    grid-template-columns: 1fr 420px 40px 40px 1fr; 
     gap: 0px 40px; 
     grid-template-areas: 
-      ". content bnt ."; 
+      ". content chick-btn delete-btn ."; 
     align-items:center;
 }
-.btn { 
-    grid-area: bnt; 
-    justify-items: end;
+.chick-btn { 
+    grid-area: chick-btn; 
+}
+.delete-btn{
+    grid-area: delete-btn; 
 }
 .content { 
     width: 100%;
