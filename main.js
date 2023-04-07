@@ -5,20 +5,14 @@ let Value_list = [];
 
 input_btn.addEventListener("click", Get_value);
 
-function print_array(Value_list,inpute_Value){
-    const group = {
-        contant:inpute_Value,
-        condition :1,        //Indicates the condition of the item
-    };
-    Value_list.push(group);
-    Value_list.forEach((group, index, Value_list) =>{
-        creat_element (group, index, Value_list);
-    })
-}
-
 function Get_value(){
     let inpute_Value = document.getElementById("Input").value;
     if (inpute_Value !==""){  // if input box is not empty
+        const group = {
+            contant:inpute_Value,
+            condition :1,        //Indicates the condition of the item
+        };
+        Value_list.push(group);
         document.getElementById("Input").value = "";//clear inpte box
         tip.style.display="none";
         Todo_list.innerHTML = "";  //refresh page
@@ -26,6 +20,11 @@ function Get_value(){
     }
 }
 
+function print_array(Value_list){
+    Value_list.forEach((group, index, Value_list) =>{
+        creat_element (group, index, Value_list);
+    })
+}
 
 function creat_element (group, index, Value_list) {
     const item = document.createElement("div");
@@ -75,13 +74,14 @@ function creat_element (group, index, Value_list) {
     item.appendChild(Delete_btn);
 
     // delete-btn feture
-    Delete_btn .addEventListener("click", () => { fun2(group,index) });
-    function fun2(group,index){
+    Delete_btn .addEventListener("click", () => { fun2(group, index, Value_list) });
+    function fun2(group, index, Value_list){
         Value_list.splice(index,1) //delete element
         Todo_list.innerHTML = "";  //refresh page
-        Value_list.forEach((group, index, Value_list) =>{
-            creat_element (group, index, Value_list);
-        })
+        print_array(Value_list);
+        if(Value_list.length === 0){
+            tip.style.display="block";
+        }
     }
 }
 
