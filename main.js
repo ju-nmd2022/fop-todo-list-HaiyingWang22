@@ -5,34 +5,37 @@ let Value_list = [];
 
 input_btn.addEventListener("click", Get_value);
 
+function print_array(Value_list,inpute_Value){
+    const group = {
+        contant:inpute_Value,
+        condition :1,        //Indicates the condition of the item
+    };
+    Value_list.push(group);
+    Value_list.forEach((group, index, Value_list) =>{
+        creat_element (group, index, Value_list);
+    })
+}
+
 function Get_value(){
     let inpute_Value = document.getElementById("Input").value;
     if (inpute_Value !==""){  // if input box is not empty
-        const group = {
-            contant:inpute_Value,
-            condition :1,        //Indicates the condition of the item
-
-        };
-        Value_list.push(A);
         document.getElementById("Input").value = "";//clear inpte box
         tip.style.display="none";
         Todo_list.innerHTML = "";  //refresh page
-        Value_list.forEach((group,index) =>{
-            // 数组需要记录两个项目为一组 内容 和状态 用for循环输出 index 内容 和状态
-            creat_element (group, index);
-        });
+        print_array(Value_list,inpute_Value);
     }
 }
 
 
-function creat_element (group, index) {
+function creat_element (group, index, Value_list) {
     const item = document.createElement("div");
     item.classList.add("item");
+    Todo_list.appendChild(item);
 
     // content
     const content_element= document.createElement("div");
     content_element.classList.add("content");
-    content_element.innerText = value;
+    content_element.innerText = group.contant;
     item.appendChild(content_element);
 
     // chick button
@@ -40,29 +43,27 @@ function creat_element (group, index) {
     check.classList.add("chick-btn");
     const icon1 = document.createElement("span");
     icon1.classList.add("material-symbols-outlined");
-    icon1.innerText = ("crop_square");
+    if(group.condition=== 1){
+        icon1.innerText = ("crop_square");
+    }
+    else{
+        icon1.innerText = ("check_box");
+    }
     check.appendChild(icon1);
     item.appendChild(check);
 
-
-    check .addEventListener("click", (group,index) => {
-        console.log(group.condition);
-
-        condition *= -1;
-
-        if(condition === 1){
-
+    // click-btn feture
+    check .addEventListener("click", () => { fun1(group,index) });
+    function fun1(group,index){
+        group.condition *= -1;
+        if(group.condition === 1){
             icon1.innerText = ("crop_square");
         }
         else{
             icon1.innerText = ("check_box");
         }
-        console.log(group.condition);
-        // 改变元素值
-    });
-
-    
-
+        group.condition[index]=group.condition;
+    }
 
     // delete button
     const Delete_btn = document.createElement("button");
@@ -73,8 +74,15 @@ function creat_element (group, index) {
     Delete_btn.appendChild(icon3);
     item.appendChild(Delete_btn);
 
-
-    Todo_list.appendChild(item);
+    // delete-btn feture
+    Delete_btn .addEventListener("click", () => { fun2(group,index) });
+    function fun2(group,index){
+        Value_list.splice(index,1) //delete element
+        Todo_list.innerHTML = "";  //refresh page
+        Value_list.forEach((group, index, Value_list) =>{
+            creat_element (group, index, Value_list);
+        })
+    }
 }
 
 // console.log(condition);
