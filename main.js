@@ -7,38 +7,64 @@ input_btn.addEventListener("click", Get_value);
 
 function Get_value(){
     let inpute_Value = document.getElementById("Input").value;
-    if (inpute_Value !==""){  // if input is not empty
-        Value_list.push(String(inpute_Value));
-        document.getElementById("Input").value = "";
+    if (inpute_Value !==""){  // if input box is not empty
+        const group = {
+            contant:inpute_Value,
+            condition :1,        //Indicates the condition of the item
+
+        };
+        Value_list.push(A);
+        document.getElementById("Input").value = "";//clear inpte box
         tip.style.display="none";
         Todo_list.innerHTML = "";  //refresh page
-        Value_list.forEach((value) =>{
-            creat_element (value);
+        Value_list.forEach((group,index) =>{
+            // 数组需要记录两个项目为一组 内容 和状态 用for循环输出 index 内容 和状态
+            creat_element (group, index);
         });
     }
 }
 
 
-function creat_element (value) {
+function creat_element (group, index) {
     const item = document.createElement("div");
     item.classList.add("item");
 
-// content
+    // content
     const content_element= document.createElement("div");
     content_element.classList.add("content");
     content_element.innerText = value;
     item.appendChild(content_element);
 
-// chick button
-    const chick = document.createElement("button");
-    chick.classList.add("chick-btn");
+    // chick button
+    const check = document.createElement("button");
+    check.classList.add("chick-btn");
     const icon1 = document.createElement("span");
     icon1.classList.add("material-symbols-outlined");
-    icon1.innerText = ("check_box");
-    chick.appendChild(icon1);
-    item.appendChild(chick);
+    icon1.innerText = ("crop_square");
+    check.appendChild(icon1);
+    item.appendChild(check);
 
-// delete button
+
+    check .addEventListener("click", (group,index) => {
+        console.log(group.condition);
+
+        condition *= -1;
+
+        if(condition === 1){
+
+            icon1.innerText = ("crop_square");
+        }
+        else{
+            icon1.innerText = ("check_box");
+        }
+        console.log(group.condition);
+        // 改变元素值
+    });
+
+    
+
+
+    // delete button
     const Delete_btn = document.createElement("button");
     Delete_btn.classList.add("delete-btn");
     const icon3 = document.createElement("span");
@@ -50,6 +76,8 @@ function creat_element (value) {
 
     Todo_list.appendChild(item);
 }
+
+// console.log(condition);
 
 
 
