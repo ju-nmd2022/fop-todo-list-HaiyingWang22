@@ -1,7 +1,18 @@
+//https://pixelkind.github.io/foundationsofprogramming/html/
+//https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+
 const input_btn = document.getElementById("input-btn")
 const Todo_list = document.getElementById("to-do-list");
 let tip = document.getElementById("tip")
 let Value_list = [];
+if(localStorage.getItem("Value") != null){
+    console.log(localStorage.getItem("Value"));
+    Value_list = JSON.parse(localStorage.getItem("Value"));// Reading
+    if(Value_list.length === 0){
+        tip.style.display="block";
+    }
+    print_array(Value_list);
+}
 
 input_btn.addEventListener("click", Get_value);
 
@@ -13,14 +24,17 @@ function Get_value(){
             condition :1,        //Indicates the condition of the item
         };
         Value_list.push(group);
-        document.getElementById("Input").value = "";//clear inpte box
         tip.style.display="none";
-        Todo_list.innerHTML = "";  //refresh page
-        print_array(Value_list,inpute_Value);
+        document.getElementById("Input").value = "";//clear inpte box
+        print_array(Value_list);
     }
 }
 
 function print_array(Value_list){
+
+    localStorage.setItem ("Value",JSON.stringify(Value_list)) ;// Writing
+    Todo_list.innerHTML = "";  //refresh page
+
     Value_list.forEach((group, index, Value_list) =>{
         creat_element (group, index, Value_list);
     })
@@ -52,8 +66,8 @@ function creat_element (group, index, Value_list) {
     item.appendChild(check);
 
     // click-btn feture
-    check .addEventListener("click", () => { fun1(group,index) });
-    function fun1(group,index){
+    check .addEventListener("click", () => { clickfun1(group,index) });
+    function clickfun1(group,index){
         group.condition *= -1;
         if(group.condition === 1){
             icon1.innerText = ("crop_square");
@@ -62,6 +76,7 @@ function creat_element (group, index, Value_list) {
             icon1.innerText = ("check_box");
         }
         group.condition[index]=group.condition;
+        print_array(Value_list);
     }
 
     // delete button
@@ -74,10 +89,9 @@ function creat_element (group, index, Value_list) {
     item.appendChild(Delete_btn);
 
     // delete-btn feture
-    Delete_btn .addEventListener("click", () => { fun2(group, index, Value_list) });
-    function fun2(group, index, Value_list){
+    Delete_btn .addEventListener("click", () => { clickfun2(group, index, Value_list) });
+    function clickfun2(group, index, Value_list){
         Value_list.splice(index,1) //delete element
-        Todo_list.innerHTML = "";  //refresh page
         print_array(Value_list);
         if(Value_list.length === 0){
             tip.style.display="block";
@@ -85,8 +99,8 @@ function creat_element (group, index, Value_list) {
     }
 }
 
+
+
+
+
 // console.log(condition);
-
-
-
-
