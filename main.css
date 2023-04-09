@@ -69,14 +69,18 @@ h1{
 .delete-btn{
     grid-area: delete-btn; 
 }
+.chick-btn,.delete-btn{
+    border: none;
+    background-color: var(--light);
+}
 .content { 
     width: 100%;
     grid-area: content; 
     font-size: 22px;
 }
-#none{
+/* #none{
     display: none;
-}
+} */
 #tip{
     display: none;
 }

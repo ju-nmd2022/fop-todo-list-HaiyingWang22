@@ -1,3 +1,4 @@
+// reference:
 //https://pixelkind.github.io/foundationsofprogramming/html/
 //https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
 
@@ -6,12 +7,11 @@ const Todo_list = document.getElementById("to-do-list");
 let tip = document.getElementById("tip")
 let Value_list = [];
 if(localStorage.getItem("Value") != null){
-    console.log(localStorage.getItem("Value"));
     Value_list = JSON.parse(localStorage.getItem("Value"));// Reading
-    if(Value_list.length === 0){
-        tip.style.display="block";
-    }
     print_array(Value_list);
+}
+if(Value_list.length === 0){
+    tip.style.display="block";
 }
 
 input_btn.addEventListener("click", Get_value);
