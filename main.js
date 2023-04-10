@@ -1,6 +1,6 @@
 // reference:
 //https://pixelkind.github.io/foundationsofprogramming/html/
-//https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+//line10 line35 https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
 
 const input_btn = document.getElementById("input-btn")
 const Todo_list = document.getElementById("to-do-list");
@@ -98,9 +98,3 @@ function creat_element (group, index, Value_list) {
         }
     }
 }
-
-
-
-
-
-// console.log(condition);
