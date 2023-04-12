@@ -1,6 +1,7 @@
 // reference:
 //https://pixelkind.github.io/foundationsofprogramming/html/
-//line10 line35 https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+//line11 line36 https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+//line70 line93 https://plainenglish.io/blog/passing-arguments-to-event-listeners-in-javascript-1a81bc397ecb
 
 const input_btn = document.getElementById("input-btn")
 const Todo_list = document.getElementById("to-do-list");
@@ -66,7 +67,7 @@ function creat_element (group, index, Value_list) {
     item.appendChild(check);
 
     // click-btn feture
-    check .addEventListener("click", () => { clickfun1(group,index) });
+    check .addEventListener("click", (event) => { clickfun1(group,index) });
     function clickfun1(group,index){
         group.condition *= -1;
         if(group.condition === 1){
@@ -89,7 +90,7 @@ function creat_element (group, index, Value_list) {
     item.appendChild(Delete_btn);
 
     // delete-btn feture
-    Delete_btn .addEventListener("click", () => { clickfun2(group, index, Value_list) });
+    Delete_btn .addEventListener("click", (event) => { clickfun2(group, index, Value_list) });
     function clickfun2(group, index, Value_list){
         Value_list.splice(index,1) //delete element
         print_array(Value_list);
